@@ -1,4 +1,16 @@
 <?php
-$lista = [10, 25, 3];
+function subsequente() {
+  for($q=0;$q<10;$q++) {
+    echo $q."<br/>";
+  }
 
-print_r($lista);
+  echo "<hr>";
+}
+
+function latir() {
+  echo 'au au<br/>';
+}
+
+for($q=0;$q<10;$q++) {
+  latir();
+}

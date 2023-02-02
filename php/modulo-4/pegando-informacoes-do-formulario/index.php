@@ -1,12 +1,5 @@
 <?php
-session_start();
 require('header.php');
-
-if($_SESSION['aviso']) {
-  echo $_SESSION['aviso'];
-  $_SESSION['aviso'] = '';
-}
-
 ?>
 
 <form method="POST" action="recebedor.php">
@@ -15,14 +8,6 @@ if($_SESSION['aviso']) {
     Nome:
     <br/>
     <input type="text" name="nome" />
-  </label>
-  <br/>
-  <br/>
-
-  <label>
-    E-mail:
-    <br/>
-    <input type="text" name="email" />
   </label>
   <br/>
   <br/>

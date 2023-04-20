@@ -10,6 +10,8 @@ $radioDest = $width / $height;
 
 $finalWidth = 0;
 $finalHeight = 0;
+$finalX = 0;
+$finalY = 0;
 
 if($radioDest > $ratio) {
   $finalWidth = $height * $ratio;
@@ -19,14 +21,26 @@ if($radioDest > $ratio) {
   $finalWidth = $width;
 }
 
-$imagem = imagecreatetruecolor($finalWidth, $finalHeight);
+if($finalWidth < $width) {
+  $finalWidth = $width;
+  $finalHeight = $width / $ratio;
+
+  $finalY = -(($height - $finalHeight) / 2);
+} else {
+  $finalHeight = $height;
+  $finalWidth = $height * $ratio;
+
+  $finalX = -(($width - $finalWidth) / 2);
+}
+
+$imagem = imagecreatetruecolor($width, $height);
 $originalImg = imagecreatefromjpeg($arquivo);
 
 
 imagecopyresized(
   $imagem, 
   $originalImg, 
-  0, 0, 0, 0, 
+  $finalX, $finalY, 0, 0, 
   $finalWidth, $finalHeight, 
   $originalWidth, $originalHeigth
 );
